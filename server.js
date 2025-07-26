@@ -2,9 +2,11 @@ import express from 'express'
 import { bugService } from './public/services/bug.service.js'
 
 const app = express()
+app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-    bugService.query().then(bugs => res.send(bugs))
+app.get('/api/bug', (req, res) => {
+    bugService.query()
+        .then(bugs => res.send(bugs))
 })
 
 app.get('/api/bug/save', (req, res) => { })
