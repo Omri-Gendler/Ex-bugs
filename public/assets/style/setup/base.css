@@ -1,7 +1,5 @@
-html,
 body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    
 }
 
 button {
@@ -18,4 +16,28 @@ button {
 button:hover {
     color: var(--color2);
     background-color: black;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    /* overflow-y: auto; */
 }
