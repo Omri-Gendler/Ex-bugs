@@ -1,128 +1,58 @@
 [
-    {
-        "_id": "bug001",
-        "title": "Cannot save a new car",
-        "description": "Problem when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454
-    },
-    {
-        "_id": "bug002",
-        "title": "Login button not working",
-        "description": "No response after clicking login",
-        "severity": 2,
-        "createdAt": 1542107360000
-    },
-    {
-        "_id": "bug003",
-        "title": "Page crashes on load",
-        "description": "Home page throws error on initial load",
-        "severity": 4,
-        "createdAt": 1542107361000
-    },
-    {
-        "_id": "bug004",
-        "title": "Profile picture not updating",
-        "description": "Unable to change profile image",
-        "severity": 2,
-        "createdAt": 1542107362000
-    },
-    {
-        "_id": "bug005",
-        "title": "Search returns no results",
-        "description": "Search function always returns empty",
-        "severity": 3,
-        "createdAt": 1542107363000
-    },
-    {
-        "_id": "bug006",
-        "title": "Logout redirects to error page",
-        "description": "After logout, user sees error page",
-        "severity": 1,
-        "createdAt": 1542107364000
-    },
-    {
-        "_id": "bug007",
-        "title": "Notifications not showing",
-        "description": "No notifications appear for new messages",
-        "severity": 2,
-        "createdAt": 1542107365000
-    },
-    {
-        "_id": "bug008",
-        "title": "Settings not saving",
-        "description": "Changes in settings are not persisted",
-        "severity": 3,
-        "createdAt": 1542107366000
-    },
-    {
-        "_id": "bug009",
-        "title": "App freezes on submit",
-        "description": "Submitting form causes app to freeze",
-        "severity": 4,
-        "createdAt": 1542107367000
-    },
-    {
-        "_id": "bug010",
-        "title": "Password reset email not sent",
-        "description": "No email received after password reset request",
-        "severity": 2,
-        "createdAt": 1542107368000
-    },
-    {
-        "_id": "bug011",
-        "title": "Dropdown menu not opening",
-        "description": "Dropdown does not expand on click",
-        "severity": 1,
-        "createdAt": 1542107369000
-    },
-    {
-        "_id": "bug012",
-        "title": "Incorrect total in cart",
-        "description": "Cart total calculation is wrong",
-        "severity": 3,
-        "createdAt": 1542107370000
-    },
-    {
-        "_id": "bug013",
-        "title": "Image upload fails",
-        "description": "Error when uploading images",
-        "severity": 2,
-        "createdAt": 1542107371000
-    },
-    {
-        "_id": "bug014",
-        "title": "Slow page load",
-        "description": "Dashboard takes too long to load",
-        "severity": 1,
-        "createdAt": 1542107372000
-    },
-    {
-        "_id": "bug015",
-        "title": "User cannot register",
-        "description": "Registration form does not submit",
-        "severity": 4,
-        "createdAt": 1542107373000
-    },
-    {
-        "_id": "bug016",
-        "title": "Missing translations",
-        "description": "Some labels are not translated",
-        "severity": 2,
-        "createdAt": 1542107374000
-    },
-    {
-        "_id": "bug017",
-        "title": "Broken link on homepage",
-        "description": "Link to About page is broken",
-        "severity": 1,
-        "createdAt": 1542107375000
-    },
-    {
-        "_id": "bug018",
-        "title": "Cannot delete item",
-        "description": "Delete button does not work",
-        "severity": 3,
-        "createdAt": 1542107376000
-    }
+  {
+    "_id": "bug011",
+    "title": "Dropdown menu not opening",
+    "description": "Dropdown does not expand on click",
+    "severity": 1,
+    "createdAt": 1542107369000
+  },
+  {
+    "_id": "bug012",
+    "title": "Incorrect total in cart",
+    "description": "Cart total calculation is wrong",
+    "severity": 3,
+    "createdAt": 1542107370000
+  },
+  {
+    "_id": "bug013",
+    "title": "Image upload fails",
+    "description": "Error when uploading images",
+    "severity": 2,
+    "createdAt": 1542107371000
+  },
+  {
+    "_id": "bug014",
+    "title": "Slow page load",
+    "description": "Dashboard takes too long to load",
+    "severity": 1,
+    "createdAt": 1542107372000
+  },
+  {
+    "_id": "bug015",
+    "title": "User cannot register",
+    "description": "Registration form does not submit",
+    "severity": 4,
+    "createdAt": 1542107373000
+  },
+  {
+    "_id": "bug016",
+    "title": "Missing translations",
+    "description": "Some labels are not translated",
+    "severity": 2,
+    "createdAt": 1542107374000
+  },
+  {
+    "_id": "bug017",
+    "title": "Broken link on homepage",
+    "description": "Link to About page is broken",
+    "severity": 1,
+    "createdAt": 1542107375000
+  },
+  {
+    "_id": "bug018",
+    "title": "Cannot delete item",
+    "description": "Delete button does not work",
+    "severity": 3,
+    "createdAt": 1542107376000
+  }
 ]

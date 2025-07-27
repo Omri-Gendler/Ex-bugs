@@ -1,0 +1,12 @@
+27.7.2025, 20:35:18 - INFO - Server listening on port http://127.0.0.1:3030/
+27.7.2025, 20:35:20 - INFO - Server listening on port http://127.0.0.1:3030/
+27.7.2025, 20:35:28 - ERROR - Cannot get bug | ReferenceError: fs is not defined
+27.7.2025, 20:43:34 - INFO - Server listening on port http://127.0.0.1:3030/
+27.7.2025, 20:43:42 - ERROR - Cannot get bug | ReferenceError: fs is not defined
+27.7.2025, 20:44:11 - INFO - Server listening on port http://127.0.0.1:3030/
+27.7.2025, 20:45:04 - INFO - Server listening on port http://127.0.0.1:3030/
+27.7.2025, 20:45:09 - ERROR - Cannot get bug | ReferenceError: fs is not defined
+27.7.2025, 20:45:14 - INFO - Server listening on port http://127.0.0.1:3030/
+27.7.2025, 20:47:16 - ERROR - Cannot get bug | ReferenceError: fs is not defined
+27.7.2025, 20:47:33 - ERROR - Cannot save bug | ReferenceError: fs is not defined
+27.7.2025, 20:47:33 - DEBUG - req.query | {"title":"Cannot save a new car","description":"Problem when clicking Save","severity":"2","_id":"bug001"}
