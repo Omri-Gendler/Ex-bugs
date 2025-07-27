@@ -102,5 +102,11 @@
     "description": "Delete button does not work",
     "severity": 3,
     "createdAt": 1542107376000
+  },
+  {
+    "title": "Bug 1753647600603",
+    "description": "",
+    "severity": 3,
+    "_id": "zcaHD"
   }
 ]
