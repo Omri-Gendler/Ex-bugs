@@ -1,36 +1,59 @@
-import { readJsonFile } from './util.service.js'
-import fs from 'fs'
+import { makeId, readJsonFile, writeJsonFile } from './util.service.js'
 
-const bugs = readJsonFile('./data/bug.json')
+const bugs = readJsonFile('data/bug.json')
 
 export const bugService = {
     query,
     getById,
-    save,
     remove,
-    getDefaultFilter
+    save,
 }
 
-function query(filterBy) {
+function query() {
+    
     return Promise.resolve(bugs)
 }
 
 function getById(bugId) {
-    return axios.get(BASE_URL, bugId)
+    const bug = bugs.find(bug => bug._id === bugId)
+
+    if (!bug) {
+        loggerService.error(`Couldnt find bug ${bugId} in bugService`)
+        return Promise.reject(`Couldnt get bug`)
+    }
+    return Promise.resolve(bug)
 }
 
 function remove(bugId) {
-    return storageService.remove(STORAGE_KEY, bugId)
-}
+    const idx = bugs.findIndex(bug => bug._id === bugId)
 
-function save(bug) {
-    if (bug._id) {
-        return storageService.put(STORAGE_KEY, bug)
-    } else {
-        return storageService.post(STORAGE_KEY, bug)
+    if (idx === -1) {
+        loggerService.error(`Couldnt find bug ${bugId} in bugService`)
+        return Promise.reject(`Couldnt remove bug`)
     }
+
+    bugs.splice(idx, 1)
+    return _saveBugs()
 }
 
-function getDefaultFilter() {
-    return { txt: '', minSeverity: 0 }
+function save(bugToSave) {
+    if (bugToSave._id) {
+        const idx = bugs.findIndex(bug => bug._id === bugToSave._id)
+
+        if (idx === -1) {
+            loggerService.error(`Couldnt find bug ${bugToSave._id} in bugService`)
+            return Promise.reject(`Couldnt save bug`)
+        }
+
+        bugs.splice(idx, 1, bugToSave)
+    } else {
+        bugToSave._id = makeId()
+        bugs.push(bugToSave)
+    }
+    return _saveBugs()
+        .then(() => bugToSave)
+}
+
+function _saveBugs() {
+    return writeJsonFile('./data/bug.json', bugs)
 }
