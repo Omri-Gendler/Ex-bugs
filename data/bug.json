@@ -1,5 +1,53 @@
 [
   {
+    "_id": "bug004",
+    "title": "Profile picture not updating",
+    "description": "Unable to change profile image",
+    "severity": 2,
+    "createdAt": 1542107362000
+  },
+  {
+    "title": "Search returns no results",
+    "description": "Search function always returns empty",
+    "severity": 5,
+    "_id": "bug005"
+  },
+  {
+    "_id": "bug006",
+    "title": "Logout redirects to error page",
+    "description": "After logout, user sees error page",
+    "severity": 1,
+    "createdAt": 1542107364000
+  },
+  {
+    "_id": "bug007",
+    "title": "Notifications not showing",
+    "description": "No notifications appear for new messages",
+    "severity": 2,
+    "createdAt": 1542107365000
+  },
+  {
+    "_id": "bug008",
+    "title": "Settings not saving",
+    "description": "Changes in settings are not persisted",
+    "severity": 3,
+    "createdAt": 1542107366000
+  },
+  {
+    "_id": "bug009",
+    "title": "App freezes on submit",
+    "description": "Submitting form causes app to freeze",
+    "severity": 4,
+    "createdAt": 1542107367000
+  },
+  {
+    "_id": "bug010",
+    "title": "Password reset email not sent",
+    "description": "No email received after password reset request",
+    "severity": 2,
+    "createdAt": 1542107368000
+  },
+  {
     "_id": "bug011",
     "title": "Dropdown menu not opening",
     "description": "Dropdown does not expand on click",
