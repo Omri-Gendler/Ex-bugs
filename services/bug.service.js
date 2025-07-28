@@ -10,7 +10,7 @@ export const bugService = {
 }
 
 function query() {
-    
+
     return Promise.resolve(bugs)
 }
 
@@ -48,6 +48,8 @@ function save(bugToSave) {
         bugs.splice(idx, 1, bugToSave)
     } else {
         bugToSave._id = makeId()
+        bugToSave.createdAt = Date.now()
+        bugToSave.updatedAt = Date.now()
         bugs.push(bugToSave)
     }
     return _saveBugs()
