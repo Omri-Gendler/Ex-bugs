@@ -88,19 +88,5 @@
     "description": "Some labels are not translated",
     "severity": 2,
     "createdAt": 1542107374000
-  },
-  {
-    "_id": "bug017",
-    "title": "Broken link on homepage",
-    "description": "Link to About page is broken",
-    "severity": 1,
-    "createdAt": 1542107375000
-  },
-  {
-    "_id": "bug018",
-    "title": "Cannot delete item",
-    "description": "Delete button does not work",
-    "severity": 3,
-    "createdAt": 1542107376000
   }
 ]

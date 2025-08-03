@@ -51,6 +51,7 @@ export function BugIndex() {
             .then(savedBug => {
                 const bugsToUpdate = bugs.map(currBug =>
                     currBug._id === savedBug._id ? savedBug : currBug)
+                    currBug.createdAt = Date.now()
 
                 setBugs(bugsToUpdate)
                 showSuccessMsg('Bug updated')
