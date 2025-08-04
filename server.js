@@ -1,25 +1,20 @@
 import express from 'express'
 import { bugService } from './services/bug.service.js'
+import { loggerService } from './services/logger.service.js'
 
 const app = express()
 app.use(express.static('public'))
+app.use(express.json())
 
 app.get('/api/bug', (req, res) => {
+    console.log('GETTING BUGS...')
+
     bugService.query()
         .then(bugs => res.send(bugs))
 })
 
-app.get('/api/bug/save', (req, res) => {
-    const bug = {
-        title: req.query.title,
-        description: req.query.description,
-        severity: +req.query.severity,
-        _id: req.query._id
-    }
-    bugService.save(bug)
-        .then(savedBug => res.send(savedBug))
-})
 
+// GET BY ID
 app.get('/api/bug/:bugId', (req, res) => {
     const bugId = req.params.bugId
     bugService.getById(bugId)
@@ -27,10 +22,32 @@ app.get('/api/bug/:bugId', (req, res) => {
         .catch(err => res.status(404).send({ error: err }))
 })
 
-app.get('/api/bug/:bugId/remove', (req, res) => {
-    const bugId = req.params.bugId
+// SAVE BUG
+app.put('/api/bug/:bugId', (req, res) => {
+
+    loggerService.debug('Saving bug:', req.body)
+
+    const { title, description, severity, _id } = req.body
+
+    const bug = {
+        _id,
+        title,
+        description,
+        severity: +severity,
+    }
+    bugService.save(bug)
+        .then(savedBug => res.send(savedBug))
+})
+
+app.delete('/api/bug/:bugId', (req, res) => {
+    const { bugId } = req.params
+    console.log('DELETING BUG:', bugId)
+
     bugService.remove(bugId)
-        .then(() => res.send({ message: 'Bug removed successfully' }))
+        .then(() => {
+            loggerService.info('Deleting bug:', bugId)
+            res.send('removed')
+        })
         .catch(err => res.status(404).send({ error: err }))
 })
 

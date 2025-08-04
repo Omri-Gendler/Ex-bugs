@@ -10,3 +10,8 @@
 27.7.2025, 20:47:16 - ERROR - Cannot get bug | ReferenceError: fs is not defined
 27.7.2025, 20:47:33 - ERROR - Cannot save bug | ReferenceError: fs is not defined
 27.7.2025, 20:47:33 - DEBUG - req.query | {"title":"Cannot save a new car","description":"Problem when clicking Save","severity":"2","_id":"bug001"}
+4.8.2025, 20:24:28 - INFO - Deleting bug: | bug001
+4.8.2025, 22:26:38 - DEBUG - Saving bug: | {}
+4.8.2025, 22:28:53 - DEBUG - Saving bug: | 
+4.8.2025, 22:31:07 - DEBUG - Saving bug: | {"_id":"bug010","title":"Settings not saved","description":"Changes lost after reload","severity":3,"createdAt":1631107359454,"labels":["persistence","bug"]}
+4.8.2025, 22:31:14 - DEBUG - Saving bug: | {"_id":"bug010","title":"Settings not saved","description":"Changes lost after reload","severity":2,"createdAt":1631107359454,"labels":["persistence","bug"]}

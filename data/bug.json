@@ -112,12 +112,7 @@
     "_id": "bug010",
     "title": "Settings not saved",
     "description": "Changes lost after reload",
-    "severity": 2,
-    "createdAt": 1631107359454,
-    "labels": [
-      "persistence",
-      "bug"
-    ]
+    "severity": 2
   },
   {
     "_id": "bug011",
