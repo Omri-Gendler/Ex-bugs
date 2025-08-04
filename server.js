@@ -19,11 +19,11 @@ app.get('/api/bug', (req, res) => {
 app.get('/api/bug/:bugId', (req, res) => {
     const bugId = req.params.bugId
     bugService.getById(bugId)
-        .then(bug => res.send(bug))
+        .then(bug => res.send(`Bug with ID: ${bug._id} found`))
         .catch(err => res.status(404).send({ error: err }))
 })
 
-// SAVE BUG
+// EDIT BUG
 app.put('/api/bug/:bugId', (req, res) => {
 
     loggerService.debug('Saving bug:', req.body)
@@ -37,7 +37,7 @@ app.put('/api/bug/:bugId', (req, res) => {
         severity: +severity,
     }
     bugService.save(bug)
-        .then(savedBug => res.send(savedBug))
+        .then(savedBug => res.send(`Bug saved with ID: ${savedBug._id}`))
 })
 
 app.post('/api/bug', (req, res) => {
@@ -45,7 +45,7 @@ app.post('/api/bug', (req, res) => {
     const bug = bugService.getEmptyBug(req.body)
 
     bugService.save(bug)
-        .then(savedBug => res.send(savedBug))
+        .then(savedBug => res.send(`Bug created with ID: ${savedBug._id}`))
 })
 
 app.delete('/api/bug/:bugId', (req, res) => {
@@ -55,7 +55,7 @@ app.delete('/api/bug/:bugId', (req, res) => {
     bugService.remove(bugId)
         .then(() => {
             loggerService.info('Deleting bug:', bugId)
-            res.send('removed')
+            res.send(`Bug ${bugId} deleted`)
         })
         .catch(err => res.status(404).send({ error: err }))
 })
