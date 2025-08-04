@@ -1,4 +1,5 @@
 import express from 'express'
+
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
 
@@ -6,13 +7,13 @@ const app = express()
 app.use(express.static('public'))
 app.use(express.json())
 
+// GET ALL BUGS
 app.get('/api/bug', (req, res) => {
     console.log('GETTING BUGS...')
 
     bugService.query()
         .then(bugs => res.send(bugs))
 })
-
 
 // GET BY ID
 app.get('/api/bug/:bugId', (req, res) => {
@@ -35,6 +36,14 @@ app.put('/api/bug/:bugId', (req, res) => {
         description,
         severity: +severity,
     }
+    bugService.save(bug)
+        .then(savedBug => res.send(savedBug))
+})
+
+app.post('/api/bug', (req, res) => {
+    loggerService.debug('Creating bug:', req.body)
+    const bug = bugService.getEmptyBug(req.body)
+
     bugService.save(bug)
         .then(savedBug => res.send(savedBug))
 })

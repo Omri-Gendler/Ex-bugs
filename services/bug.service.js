@@ -7,6 +7,7 @@ export const bugService = {
     getById,
     remove,
     save,
+    getEmptyBug
 }
 
 function query() {
@@ -58,4 +59,15 @@ function save(bugToSave) {
 
 function _saveBugs() {
     return writeJsonFile('./data/bug.json', bugs)
+}
+
+function getEmptyBug(title, description, severity, labels) {
+    return {
+        title: title || '',
+        description: description || '',
+        severity: severity || 1,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+        labels: labels || [],
+    }
 }
