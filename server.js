@@ -10,11 +10,24 @@ app.use(express.json())
 // GET ALL BUGS
 app.get('/api/bug', (req, res) => {
     console.log('GETTING BUGS...')
-    console.log('req.query:', req.query);
-    
-    const filterBy = req.query
+    console.log('req.query:', req.query)
 
-    bugService.query(filterBy)
+    const { txt, sortBy, sortDir, pageIdx } = req.query
+
+    const filter = {
+        txt: txt || '',
+    }
+
+    const sort = {
+        sortBy: sortBy || 'title', // Default sort by title
+        sortDir: sortDir ? parseInt(sortDir) : 1, // Default to ascending order
+    }
+
+    const page = {
+        pageIdx: pageIdx ? parseInt(pageIdx) : 1
+    }
+
+    bugService.query(filter, sort, page)
         .then(bugs => res.send(bugs))
 })
 

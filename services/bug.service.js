@@ -10,18 +10,14 @@ export const bugService = {
     getEmptyBug
 }
 
-function query(filterBy = {}) {
+function query(filter, sort, page) {
     let filteredBugs = bugs
 
-    if (filterBy.txt) {
-        const regExp = new RegExp(filterBy.txt, 'i')
-        filteredBugs = filteredBugs.filter(bug => regExp.test(bug.title))
+    if (filter.txt) {
+        console.log(filter, sort, page)
+        const regex = new RegExp(filter.txt, 'i')
+        filteredBugs = filteredBugs.filter(bug => regex.test(bug.title))
     }
-
-    if (filterBy.minSeverity) {
-        filteredBugs = filteredBugs.filter(bug => bug.severity >= filterBy.minSeverity)
-    }
-
     return Promise.resolve(filteredBugs)
 }
 
