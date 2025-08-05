@@ -20,18 +20,6 @@
     "_id": "LgvOF"
   },
   {
-    "_id": "bug001",
-    "title": "Cannot save a Car",
-    "description": "Problem occurs when clicking Save button on form",
-    "severity": 2,
-    "createdAt": 1622107359454,
-    "labels": [
-      "critical",
-      "need-CR",
-      "dev-branch"
-    ]
-  },
-  {
     "_id": "bug003",
     "title": "Data not syncing",
     "description": "Remote sync fails without error message",
@@ -40,17 +28,6 @@
     "labels": [
       "sync",
       "critical"
-    ]
-  },
-  {
-    "_id": "bug004",
-    "title": "UI glitch on sidebar",
-    "description": "Sidebar icons overlap on small screens",
-    "severity": 1,
-    "createdAt": 1625107359454,
-    "labels": [
-      "ui",
-      "responsive"
     ]
   },
   {

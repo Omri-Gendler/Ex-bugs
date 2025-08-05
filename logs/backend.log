@@ -17,3 +17,5 @@
 4.8.2025, 22:31:14 - DEBUG - Saving bug: | {"_id":"bug010","title":"Settings not saved","description":"Changes lost after reload","severity":2,"createdAt":1631107359454,"labels":["persistence","bug"]}
 4.8.2025, 22:49:39 - DEBUG - Creating bug: | 
 4.8.2025, 22:50:01 - INFO - Deleting bug: | 4RYOZ
+5.8.2025, 19:41:58 - INFO - Deleting bug: | bug001
+5.8.2025, 19:42:26 - INFO - Deleting bug: | bug004
