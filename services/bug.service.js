@@ -11,7 +11,6 @@ export const bugService = {
 }
 
 function query(filter, sort, page) {
-function query(filter, sort, page) {
     let filteredBugs = bugs
 
     if (filter.txt) {
@@ -19,6 +18,22 @@ function query(filter, sort, page) {
         const regex = new RegExp(filter.txt, 'i')
         filteredBugs = filteredBugs.filter(bug => regex.test(bug.title) || regex.test(bug.description))
     }
+
+    // // Apply sorting
+    // if (sort.sortBy) {
+    //     filteredBugs = filteredBugs.sort((a, b) => {
+    //         if (a[sort.sortBy] < b[sort.sortBy]) return -sort.sortDir
+    //         if (a[sort.sortBy] > b[sort.sortBy]) return sort.sortDir
+    //         return 0
+    //     })
+    // }
+
+    // // Apply pagination
+    // const pageSize = 10
+    // const startIdx = (page.pageIdx - 1) * pageSize
+    // const endIdx = startIdx + pageSize
+    // filteredBugs = filteredBugs.slice(startIdx, endIdx)
+
     return Promise.resolve(filteredBugs)
 }
 
