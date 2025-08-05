@@ -14,27 +14,33 @@ function query(filter, sort, page) {
     let filteredBugs = bugs
 
     if (filter.txt) {
-        console.log(filter, sort, page)
         const regex = new RegExp(filter.txt, 'i')
         filteredBugs = filteredBugs.filter(bug => regex.test(bug.title) || regex.test(bug.description))
     }
 
-    // // Apply sorting
-    // if (sort.sortBy) {
-    //     filteredBugs = filteredBugs.sort((a, b) => {
-    //         if (a[sort.sortBy] < b[sort.sortBy]) return -sort.sortDir
-    //         if (a[sort.sortBy] > b[sort.sortBy]) return sort.sortDir
-    //         return 0
-    //     })
-    // }
+    // Apply sorting
+    if (sort) {
+        console.log(filter, sort, page)
 
-    // // Apply pagination
-    // const pageSize = 10
-    // const startIdx = (page.pageIdx - 1) * pageSize
-    // const endIdx = startIdx + pageSize
-    // filteredBugs = filteredBugs.slice(startIdx, endIdx)
+        if (['severity', 'createdAt'].includes(sort.sortBy)) {
+            // Numeric sorting
+            filteredBugs.sort((a, b) =>
+                (a[sort.sortBy] - b[sort.sortBy]) * sort.sortDir)
+        } else {
+            // String sorting
+            filteredBugs.sort((a, b) =>
+                a[sort.sortBy].toLowerCase().localeCompare(b[sort.sortBy].toLowerCase()) * sort.sortDir)
+        }
 
-    return Promise.resolve(filteredBugs)
+
+        // // Apply pagination
+        // const pageSize = 10
+        // const startIdx = (page.pageIdx - 1) * pageSize
+        // const endIdx = startIdx + pageSize
+        // filteredBugs = filteredBugs.slice(startIdx, endIdx)
+
+        return Promise.resolve(filteredBugs)
+    }
 }
 
 function getById(bugId) {
