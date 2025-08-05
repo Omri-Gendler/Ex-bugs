@@ -10,8 +10,11 @@ app.use(express.json())
 // GET ALL BUGS
 app.get('/api/bug', (req, res) => {
     console.log('GETTING BUGS...')
+    console.log('req.query:', req.query);
+    
+    const filterBy = req.query
 
-    bugService.query()
+    bugService.query(filterBy)
         .then(bugs => res.send(bugs))
 })
 
@@ -19,7 +22,7 @@ app.get('/api/bug', (req, res) => {
 app.get('/api/bug/:bugId', (req, res) => {
     const bugId = req.params.bugId
     bugService.getById(bugId)
-        .then(bug => res.send(`Bug with ID: ${bug._id} found`))
+        .then(bug => res.send(bug)) // Send the actual bug object
         .catch(err => res.status(404).send({ error: err }))
 })
 
