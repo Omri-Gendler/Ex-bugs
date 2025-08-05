@@ -2,6 +2,9 @@ import { makeId, readJsonFile, writeJsonFile } from './util.service.js'
 
 const bugs = readJsonFile('data/bug.json')
 
+const BUGS_PER_PAGE = 3
+
+
 export const bugService = {
     query,
     getById,
@@ -32,12 +35,10 @@ function query(filter, sort, page) {
                 a[sort.sortBy].toLowerCase().localeCompare(b[sort.sortBy].toLowerCase()) * sort.sortDir)
         }
 
+        let startPage = page.pageIdx * BUGS_PER_PAGE
+        let endPage = startPage + BUGS_PER_PAGE
 
-        // // Apply pagination
-        // const pageSize = 10
-        // const startIdx = (page.pageIdx - 1) * pageSize
-        // const endIdx = startIdx + pageSize
-        // filteredBugs = filteredBugs.slice(startIdx, endIdx)
+        filteredBugs = filteredBugs.slice(startPage, endPage)
 
         return Promise.resolve(filteredBugs)
     }
