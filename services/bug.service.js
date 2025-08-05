@@ -11,6 +11,7 @@ export const bugService = {
 }
 
 function query(filter, sort, page) {
+function query(filter, sort, page) {
     let filteredBugs = bugs
 
     if (filter.txt) {
