@@ -30,51 +30,6 @@
     "_id": "uZz7e"
   },
   {
-    "_id": "bug011",
-    "title": "File upload fails",
-    "description": "Only images smaller than 1MB allowed, error not shown",
-    "severity": 2,
-    "createdAt": 1632107359454,
-    "labels": [
-      "upload",
-      "validation"
-    ]
-  },
-  {
-    "_id": "bug007",
-    "title": "Incorrect total in cart",
-    "description": "Discount not applied correctly",
-    "severity": 2,
-    "createdAt": 1628107359454,
-    "labels": [
-      "logic",
-      "ecommerce"
-    ]
-  },
-  {
-    "title": "Login form stuck",
-    "description": "Login button does not respond after input",
-    "severity": 2,
-    "createdAt": 1754233214817,
-    "labels": [
-      "ui",
-      "needs-debug",
-      "save"
-    ],
-    "_id": "LgvOF"
-  },
-  {
-    "_id": "bug019",
-    "title": "Logout redirects incorrectly",
-    "description": "Stuck on blank screen",
-    "severity": 1,
-    "createdAt": 1640107359454,
-    "labels": [
-      "auth",
-      "routing"
-    ]
-  },
-  {
     "_id": "bug016",
     "title": "Memory leak on dashboard",
     "description": "RAM usage increases continuously",
@@ -134,5 +89,14 @@
       "performance",
       "backend"
     ]
+  },
+  {
+    "title": "Bug 1754657661233",
+    "description": "",
+    "severity": 3,
+    "_id": "gOOaF",
+    "createdAt": 1754657661970,
+    "updatedAt": 1754657661970,
+    "isDone": false
   }
 ]

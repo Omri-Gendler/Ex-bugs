@@ -41,27 +41,36 @@ app.get('/api/bug/:bugId', (req, res) => {
 
 // EDIT BUG
 app.put('/api/bug/:bugId', (req, res) => {
-
     loggerService.debug('Saving bug:', req.body)
 
-    const { title, description, severity, _id } = req.body
+    const { title, description, severity } = req.body
 
     const bug = {
-        _id,
+        _id: req.params.bugId, // Use bugId from URL params
         title,
         description,
         severity: +severity,
     }
+    
     bugService.save(bug)
-        .then(savedBug => res.send(`Bug saved with ID: ${savedBug._id}`))
+        .then(savedBug => res.send(savedBug)) // Send the bug object, not a string
+        .catch(err => res.status(400).send({ error: err }))
 })
 
 app.post('/api/bug', (req, res) => {
     loggerService.debug('Creating bug:', req.body)
-    const bug = bugService.getEmptyBug(req.body)
-
+    
+    const { title, description, severity } = req.body
+    
+    const bug = {
+        title,
+        description,
+        severity: +severity,
+    }
+    
     bugService.save(bug)
-        .then(savedBug => res.send(`Bug created with ID: ${savedBug._id}`))
+        .then(savedBug => res.send(savedBug)) // Send the bug object, not a string
+        .catch(err => res.status(400).send({ error: err }))
 })
 
 app.delete('/api/bug/:bugId', (req, res) => {

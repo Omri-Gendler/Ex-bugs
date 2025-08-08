@@ -25,3 +25,14 @@
 8.8.2025, 15:47:51 - INFO - Deleting bug: | bug003
 8.8.2025, 15:47:52 - INFO - Deleting bug: | bug008
 8.8.2025, 15:47:54 - INFO - Deleting bug: | bug020
+8.8.2025, 15:51:26 - INFO - Deleting bug: | bug011
+8.8.2025, 15:53:42 - DEBUG - Creating bug: | {"title":"Bug 1754657621280","severity":3,"description":""}
+8.8.2025, 15:53:47 - DEBUG - Creating bug: | {"title":"Bug 1754657623798","severity":3,"description":""}
+8.8.2025, 15:53:55 - DEBUG - Creating bug: | {"title":"Uri","severity":3,"description":""}
+8.8.2025, 15:53:59 - INFO - Deleting bug: | iPzea
+8.8.2025, 15:54:00 - INFO - Deleting bug: | aGK87
+8.8.2025, 15:54:01 - INFO - Deleting bug: | bug007
+8.8.2025, 15:54:02 - INFO - Deleting bug: | LgvOF
+8.8.2025, 15:54:03 - INFO - Deleting bug: | bug019
+8.8.2025, 15:54:04 - INFO - Deleting bug: | DQnwt
+8.8.2025, 15:54:21 - DEBUG - Creating bug: | {"title":"Bug 1754657661233","severity":3,"description":""}

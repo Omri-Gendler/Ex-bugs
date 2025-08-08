@@ -5,7 +5,7 @@ export const bugService = {
     getById,
     save,
     remove,
-    getDefaultFilter
+    getDefaultFilter,
 }
 
 function query(filterBy) {
@@ -37,15 +37,16 @@ function remove(bugId) {
 }
 
 function save(bug) {
-
-    var queryParmas = `?title=${bug.title}&description=${bug.description}&severity=${bug.severity}`
-    if (bug._id) queryParmas += `&_id=${bug._id}`
-    console.log(queryParmas);
-
-    return axios.get(BASE_URL + 'save/' + queryParmas).then(res => res.data)
+    if (bug._id) {
+        // Editing existing bug - use PUT
+        return axios.put(`${BASE_URL}${bug._id}`, bug)
+            .then(res => res.data)
+    } else {
+        // Creating new bug - use POST
+        return axios.post(BASE_URL, bug)
+            .then(res => res.data)
+    }
 }
-
-
 
 function getDefaultFilter() {
     return { txt: '', minSeverity: 0 }

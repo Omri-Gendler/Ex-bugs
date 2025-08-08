@@ -68,35 +68,40 @@ function remove(bugId) {
 
 function save(bugToSave) {
     if (bugToSave._id) {
+        // Update existing bug
         const idx = bugs.findIndex(bug => bug._id === bugToSave._id)
 
         if (idx === -1) {
-            loggerService.error(`Couldnt find bug ${bugToSave._id} in bugService`)
-            return Promise.reject(`Couldnt save bug`)
+            loggerService.error(`Couldn't find bug ${bugToSave._id} in bugService`)
+            return Promise.reject(`Couldn't save bug`)
         }
 
+        bugToSave.updatedAt = Date.now()
         bugs.splice(idx, 1, bugToSave)
     } else {
+        // Create new bug
         bugToSave._id = makeId()
         bugToSave.createdAt = Date.now()
         bugToSave.updatedAt = Date.now()
+        bugToSave.isDone = false
         bugs.push(bugToSave)
     }
+
     return _saveBugs()
-        .then(() => bugToSave)
+        .then(() => bugToSave) // Return the saved bug
 }
 
 function _saveBugs() {
     return writeJsonFile('./data/bug.json', bugs)
 }
 
-function getEmptyBug(title, description, severity, labels) {
+function getEmptyBug(title = '', description = '', severity = 1) {
     return {
-        title: title || '',
-        description: description || '',
-        severity: severity || 1,
+        title,
+        description,
+        severity: +severity,
+        isDone: false,
         createdAt: Date.now(),
-        updatedAt: Date.now(),
-        labels: labels || [],
+        updatedAt: Date.now()
     }
 }

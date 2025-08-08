@@ -37,10 +37,14 @@ export function BugIndex() {
 
         bugService.save(bug)
             .then(savedBug => {
-                setBugs([...bugs, savedBug])
+                console.log('Bug added:', savedBug)
+                setBugs(prevBugs => [...prevBugs, savedBug])
                 showSuccessMsg('Bug added')
             })
-            .catch(err => showErrorMsg(`Cannot add bug`, err))
+            .catch(err => {
+                console.error('Add bug error:', err)
+                showErrorMsg(`Cannot add bug`, err)
+            })
     }
 
     function onEditBug(bug) {
@@ -51,7 +55,7 @@ export function BugIndex() {
             .then(savedBug => {
                 const bugsToUpdate = bugs.map(currBug =>
                     currBug._id === savedBug._id ? savedBug : currBug)
-                    currBug.createdAt = Date.now()
+                currBug.createdAt = Date.now()
 
                 setBugs(bugsToUpdate)
                 showSuccessMsg('Bug updated')
