@@ -30,15 +30,20 @@
     "_id": "uZz7e"
   },
   {
-    "_id": "bug016",
-    "title": "Memory leak on dashboard",
-    "description": "RAM usage increases continuously",
+    "title": "Bug 1754657661233",
+    "description": "",
     "severity": 3,
-    "createdAt": 1637107359454,
-    "labels": [
-      "performance",
-      "dashboard"
-    ]
+    "_id": "gOOaF",
+    "createdAt": 1754657661970,
+    "updatedAt": 1754657661970,
+    "isDone": false
+  },
+  {
+    "_id": "bug016",
+    "title": "you right",
+    "description": "i know",
+    "severity": 5,
+    "updatedAt": 1754658187323
   },
   {
     "_id": "bug017",
@@ -89,14 +94,5 @@
       "performance",
       "backend"
     ]
-  },
-  {
-    "title": "Bug 1754657661233",
-    "description": "",
-    "severity": 3,
-    "_id": "gOOaF",
-    "createdAt": 1754657661970,
-    "updatedAt": 1754657661970,
-    "isDone": false
   }
 ]

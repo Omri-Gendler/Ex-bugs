@@ -42,19 +42,32 @@ app.get('/api/bug/:bugId', (req, res) => {
 // EDIT BUG
 app.put('/api/bug/:bugId', (req, res) => {
     loggerService.debug('Saving bug:', req.body)
+    console.log('Request body:', req.body) // Add this debug log
+    console.log('Bug ID from params:', req.params.bugId) // Add this debug log
 
     const { title, description, severity } = req.body
 
+    // Check if required fields are present
+    if (!title || !description || severity === undefined) {
+        return res.status(400).send({ error: 'Missing required fields: title, description, severity' })
+    }
+
     const bug = {
-        _id: req.params.bugId, // Use bugId from URL params
+        _id: req.params.bugId,
         title,
         description,
         severity: +severity,
     }
     
     bugService.save(bug)
-        .then(savedBug => res.send(savedBug)) // Send the bug object, not a string
-        .catch(err => res.status(400).send({ error: err }))
+        .then(savedBug => {
+            console.log('Saved bug:', savedBug) // Add this debug log
+            res.send(savedBug)
+        })
+        .catch(err => {
+            console.error('Save error:', err) // Add this debug log
+            res.status(400).send({ error: err })
+        })
 })
 
 app.post('/api/bug', (req, res) => {

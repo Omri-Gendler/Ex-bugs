@@ -37,14 +37,24 @@ function remove(bugId) {
 }
 
 function save(bug) {
+    console.log('Save function called with:', bug) // Debug log
+    
     if (bug._id) {
         // Editing existing bug - use PUT
+        console.log('Making PUT request to:', `${BASE_URL}${bug._id}`)
         return axios.put(`${BASE_URL}${bug._id}`, bug)
-            .then(res => res.data)
+            .then(res => {
+                console.log('PUT response:', res.data)
+                return res.data
+            })
     } else {
         // Creating new bug - use POST
+        console.log('Making POST request to:', BASE_URL)
         return axios.post(BASE_URL, bug)
-            .then(res => res.data)
+            .then(res => {
+                console.log('POST response:', res.data)
+                return res.data
+            })
     }
 }
 

@@ -48,19 +48,38 @@ export function BugIndex() {
     }
 
     function onEditBug(bug) {
-        const severity = +prompt('New severity?', bug.severity)
-        const bugToSave = { ...bug, severity }
+        const title = prompt('Bug title?', bug.title)
+        if (title === null) return // User cancelled
+        
+        const description = prompt('Bug description?', bug.description) 
+        if (description === null) return
+        
+        const severity = +prompt('Bug severity?', bug.severity)
+        if (isNaN(severity)) return
+        
+        // Make sure to include ALL required fields
+        const bugToSave = { 
+            ...bug,  // Keep all existing properties
+            title, 
+            description, 
+            severity 
+        }
+
+        console.log('Sending bug to save:', bugToSave) // Debug log
 
         bugService.save(bugToSave)
             .then(savedBug => {
+                console.log('Received saved bug:', savedBug) // Debug log
                 const bugsToUpdate = bugs.map(currBug =>
                     currBug._id === savedBug._id ? savedBug : currBug)
-                currBug.createdAt = Date.now()
-
+                
                 setBugs(bugsToUpdate)
                 showSuccessMsg('Bug updated')
             })
-            .catch(err => showErrorMsg('Cannot update bug', err))
+            .catch(err => {
+                console.error('Edit error:', err) // Debug log
+                showErrorMsg('Cannot update bug', err)
+            })
     }
 
     function onSetFilterBy(filterBy) {
