@@ -3,6 +3,7 @@ import { makeId, readJsonFile, writeJsonFile } from './util.service.js'
 const bugs = readJsonFile('data/bug.json')
 
 const BUGS_PER_PAGE = 3
+let filteredBugs = bugs
 
 
 export const bugService = {
@@ -38,7 +39,7 @@ function query(filter, sort, page) {
         let startPage = page.pageIdx * BUGS_PER_PAGE
         let endPage = startPage + BUGS_PER_PAGE
 
-        filteredBugs = filteredBugs.slice(startPage, endPage)
+        // filteredBugs = filteredBugs.slice(startPage, endPage)
 
         return Promise.resolve(filteredBugs)
     }
