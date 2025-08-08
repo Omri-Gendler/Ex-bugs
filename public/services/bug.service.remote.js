@@ -1,4 +1,3 @@
-
 const BASE_URL = '/api/bug/'
 
 export const bugService = {
@@ -33,10 +32,8 @@ function getById(bugId) {
 }
 
 function remove(bugId) {
-    const url = BASE_URL + bugId + '/remove'
-    console.log(url)
-
-    return axios.get(url)
+    return axios.delete(`${BASE_URL}${bugId}`) // Use DELETE method, not GET
+        .then(res => res.data)
 }
 
 function save(bug) {

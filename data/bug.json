@@ -1,33 +1,13 @@
 [
   {
-    "title": "Bug 1754239710841",
-    "description": "desc",
-    "severity": 4,
-    "createdAt": 1754239718995,
-    "labels": [],
-    "_id": "uZz7e"
-  },
-  {
-    "title": "Login form stuck",
-    "description": "Login button does not respond after input",
+    "_id": "bug018",
+    "title": "API returns wrong status code",
+    "description": "Returns 200 even when operation fails",
     "severity": 2,
-    "createdAt": 1754233214817,
+    "createdAt": 1639107359454,
     "labels": [
-      "ui",
-      "needs-debug",
-      "save"
-    ],
-    "_id": "LgvOF"
-  },
-  {
-    "_id": "bug003",
-    "title": "Data not syncing",
-    "description": "Remote sync fails without error message",
-    "severity": 3,
-    "createdAt": 1624107359454,
-    "labels": [
-      "sync",
-      "critical"
+      "api",
+      "backend"
     ]
   },
   {
@@ -42,14 +22,22 @@
     ]
   },
   {
-    "_id": "bug006",
-    "title": "Slow response from server",
-    "description": "API call takes 30s to return",
+    "title": "Bug 1754239710841",
+    "description": "desc",
+    "severity": 4,
+    "createdAt": 1754239718995,
+    "labels": [],
+    "_id": "uZz7e"
+  },
+  {
+    "_id": "bug011",
+    "title": "File upload fails",
+    "description": "Only images smaller than 1MB allowed, error not shown",
     "severity": 2,
-    "createdAt": 1627107359454,
+    "createdAt": 1632107359454,
     "labels": [
-      "performance",
-      "backend"
+      "upload",
+      "validation"
     ]
   },
   {
@@ -64,86 +52,26 @@
     ]
   },
   {
-    "_id": "bug008",
-    "title": "Dropdown not closing",
-    "description": "Dropdown menu stays open on click outside",
-    "severity": 1,
-    "createdAt": 1629107359454,
+    "title": "Login form stuck",
+    "description": "Login button does not respond after input",
+    "severity": 2,
+    "createdAt": 1754233214817,
     "labels": [
       "ui",
-      "frontend"
-    ]
+      "needs-debug",
+      "save"
+    ],
+    "_id": "LgvOF"
   },
   {
-    "_id": "bug009",
-    "title": "Search results empty",
-    "description": "Results not returned even for common queries",
-    "severity": 2,
-    "createdAt": 1630107359454,
-    "labels": [
-      "search",
-      "backend"
-    ]
-  },
-  {
-    "_id": "bug010",
-    "title": "Settings not saved",
-    "description": "Changes lost after reload",
-    "severity": 2
-  },
-  {
-    "_id": "bug011",
-    "title": "File upload fails",
-    "description": "Only images smaller than 1MB allowed, error not shown",
-    "severity": 2,
-    "createdAt": 1632107359454,
-    "labels": [
-      "upload",
-      "validation"
-    ]
-  },
-  {
-    "_id": "bug012",
-    "title": "Notifications not appearing",
-    "description": "No push shown after message received",
-    "severity": 2,
-    "createdAt": 1633107359454,
-    "labels": [
-      "notifications",
-      "realtime"
-    ]
-  },
-  {
-    "_id": "bug013",
-    "title": "Crash on profile edit",
-    "description": "App closes when editing name field",
-    "severity": 3,
-    "createdAt": 1634107359454,
-    "labels": [
-      "crash",
-      "profile"
-    ]
-  },
-  {
-    "_id": "bug014",
-    "title": "Dark mode not persisting",
-    "description": "Reverts to light mode on refresh",
+    "_id": "bug019",
+    "title": "Logout redirects incorrectly",
+    "description": "Stuck on blank screen",
     "severity": 1,
-    "createdAt": 1635107359454,
+    "createdAt": 1640107359454,
     "labels": [
-      "theme",
-      "frontend"
-    ]
-  },
-  {
-    "_id": "bug015",
-    "title": "Button double click triggers twice",
-    "description": "Double submission of form",
-    "severity": 2,
-    "createdAt": 1636107359454,
-    "labels": [
-      "ui",
-      "validation"
+      "auth",
+      "routing"
     ]
   },
   {
@@ -169,36 +97,42 @@
     ]
   },
   {
-    "_id": "bug018",
-    "title": "API returns wrong status code",
-    "description": "Returns 200 even when operation fails",
+    "_id": "bug012",
+    "title": "Notifications not appearing",
+    "description": "No push shown after message received",
     "severity": 2,
-    "createdAt": 1639107359454,
+    "createdAt": 1633107359454,
     "labels": [
-      "api",
+      "notifications",
+      "realtime"
+    ]
+  },
+  {
+    "_id": "bug009",
+    "title": "Search results empty",
+    "description": "Results not returned even for common queries",
+    "severity": 2,
+    "createdAt": 1630107359454,
+    "labels": [
+      "search",
       "backend"
     ]
   },
   {
-    "_id": "bug019",
-    "title": "Logout redirects incorrectly",
-    "description": "Stuck on blank screen",
-    "severity": 1,
-    "createdAt": 1640107359454,
-    "labels": [
-      "auth",
-      "routing"
-    ]
+    "_id": "bug010",
+    "title": "Settings not saved",
+    "description": "Changes lost after reload",
+    "severity": 2
   },
   {
-    "_id": "bug020",
-    "title": "Email confirmation not sent",
-    "description": "New users do not receive confirmation email",
+    "_id": "bug006",
+    "title": "Slow response from server",
+    "description": "API call takes 30s to return",
     "severity": 2,
-    "createdAt": 1641107359454,
+    "createdAt": 1627107359454,
     "labels": [
-      "email",
-      "onboarding"
+      "performance",
+      "backend"
     ]
   }
 ]

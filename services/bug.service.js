@@ -55,15 +55,15 @@ function getById(bugId) {
 }
 
 function remove(bugId) {
-    const idx = bugs.findIndex(bug => bug._id === bugId)
-
-    if (idx === -1) {
-        loggerService.error(`Couldnt find bug ${bugId} in bugService`)
-        return Promise.reject(`Couldnt remove bug`)
+    const bugIdx = bugs.findIndex(bug => bug._id === bugId)
+    
+    if (bugIdx === -1) {
+        return Promise.reject(`Bug with id ${bugId} not found`)
     }
-
-    bugs.splice(idx, 1)
+    
+    bugs.splice(bugIdx, 1)
     return _saveBugs()
+        .then(() => bugId)
 }
 
 function save(bugToSave) {

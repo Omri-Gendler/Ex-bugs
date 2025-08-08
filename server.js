@@ -71,10 +71,13 @@ app.delete('/api/bug/:bugId', (req, res) => {
     bugService.remove(bugId)
         .then(() => {
             loggerService.info('Deleting bug:', bugId)
-            res.send(`Bug ${bugId} deleted`)
+            res.send({ message: `Bug ${bugId} deleted`, success: true }) // Send object instead of string
         })
-        .catch(err => res.status(404).send({ error: err }))
+        .catch(err => {
+            console.error('Delete error:', err)
+            res.status(404).send({ error: err })
+        })
 })
 
 const port = 3030
-app.listen(port, () => console.log('Server ready at port 3030')) 
+app.listen(port, () => console.log('Server ready at port 3030'))
