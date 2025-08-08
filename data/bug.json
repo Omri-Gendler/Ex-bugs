@@ -1,98 +1,392 @@
 [
   {
-    "_id": "bug018",
-    "title": "API returns wrong status code",
-    "description": "Returns 200 even when operation fails",
+    "_id": "bug101",
+    "title": "Login screen flickers on Firefox",
+    "description": "Username field disappears when typing password",
     "severity": 2,
-    "createdAt": 1639107359454,
+    "createdAt": 1672531200000,
+    "isDone": false,
     "labels": [
-      "api",
-      "backend"
+      "firefox",
+      "login",
+      "ui"
     ]
   },
   {
-    "_id": "bug005",
-    "title": "App crashes on launch",
-    "description": "Crashes immediately after opening",
-    "severity": 3,
-    "createdAt": 1626107359454,
-    "labels": [
-      "crash",
-      "urgent"
-    ]
-  },
-  {
-    "title": "Bug 1754239710841",
-    "description": "desc",
+    "_id": "bug102",
+    "title": "Shopping cart total calculation wrong",
+    "description": "Tax not included in final price display",
     "severity": 4,
-    "createdAt": 1754239718995,
-    "labels": [],
-    "_id": "uZz7e"
+    "createdAt": 1672617600000,
+    "isDone": false,
+    "labels": [
+      "cart",
+      "calculation",
+      "critical"
+    ]
   },
   {
-    "title": "Bug 1754657661233",
-    "description": "",
+    "_id": "bug103",
+    "title": "Profile picture upload corrupted",
+    "description": "JPEG images become pixelated after upload",
+    "severity": 2,
+    "createdAt": 1672704000000,
+    "isDone": true,
+    "labels": [
+      "image",
+      "upload",
+      "quality"
+    ]
+  },
+  {
+    "_id": "bug104",
+    "title": "Chat messages out of order",
+    "description": "Newest messages appear at random positions",
     "severity": 3,
-    "_id": "gOOaF",
-    "createdAt": 1754657661970,
-    "updatedAt": 1754657661970,
-    "isDone": false
+    "createdAt": 1672790400000,
+    "isDone": false,
+    "labels": [
+      "chat",
+      "realtime",
+      "sorting"
+    ]
   },
   {
-    "_id": "bug016",
-    "title": "you right",
-    "description": "i know",
-    "severity": 5,
-    "updatedAt": 1754658187323
-  },
-  {
-    "_id": "bug017",
-    "title": "Multiselect clears after submit",
-    "description": "Selected options lost from UI",
+    "_id": "bug105",
+    "title": "Export PDF missing footer",
+    "description": "Company logo not appearing on generated reports",
     "severity": 1,
-    "createdAt": 1638107359454,
+    "createdAt": 1672876800000,
+    "isDone": false,
     "labels": [
+      "pdf",
+      "export",
+      "branding"
+    ]
+  },
+  {
+    "_id": "bug106",
+    "title": "Weather widget shows wrong location",
+    "description": "Displays New York weather for London users",
+    "severity": 2,
+    "createdAt": 1672963200000,
+    "isDone": false,
+    "labels": [
+      "geolocation",
+      "widget",
+      "api"
+    ]
+  },
+  {
+    "_id": "bug107",
+    "title": "Video player freezes at 30 seconds",
+    "description": "Streaming stops but audio continues playing",
+    "severity": 3,
+    "createdAt": 1673049600000,
+    "isDone": false,
+    "labels": [
+      "video",
+      "streaming",
+      "player"
+    ]
+  },
+  {
+    "_id": "bug108",
+    "title": "Two-factor auth codes expired",
+    "description": "SMS codes invalid even within 5 minute window",
+    "severity": 4,
+    "createdAt": 1673136000000,
+    "isDone": false,
+    "labels": [
+      "security",
+      "2fa",
+      "sms"
+    ]
+  },
+  {
+    "_id": "bug109",
+    "title": "Calendar events duplicate on sync",
+    "description": "Google Calendar integration creates multiple entries",
+    "severity": 2,
+    "createdAt": 1673222400000,
+    "isDone": true,
+    "labels": [
+      "calendar",
+      "sync",
+      "google"
+    ]
+  },
+  {
+    "_id": "bug110",
+    "title": "Dashboard widgets randomly disappear",
+    "description": "Custom widgets reset to default after browser refresh",
+    "severity": 2,
+    "createdAt": 1673308800000,
+    "isDone": false,
+    "labels": [
+      "dashboard",
+      "widgets",
+      "persistence"
+    ]
+  },
+  {
+    "_id": "bug111",
+    "title": "Invoice PDF corrupted on mobile",
+    "description": "Numbers overlap with text on small screens",
+    "severity": 3,
+    "createdAt": 1673395200000,
+    "isDone": false,
+    "labels": [
+      "mobile",
+      "pdf",
+      "layout"
+    ]
+  },
+  {
+    "_id": "bug112",
+    "title": "Language switcher breaks navigation",
+    "description": "Menu items disappear after changing to Spanish",
+    "severity": 2,
+    "createdAt": 1673481600000,
+    "isDone": false,
+    "labels": [
+      "i18n",
+      "navigation",
+      "spanish"
+    ]
+  },
+  {
+    "_id": "bug113",
+    "title": "Backup process fails silently",
+    "description": "No error message shown when disk space full",
+    "severity": 4,
+    "createdAt": 1673568000000,
+    "isDone": false,
+    "labels": [
+      "backup",
+      "storage",
+      "error-handling"
+    ]
+  },
+  {
+    "_id": "bug114",
+    "title": "Color picker shows wrong hex values",
+    "description": "Selected blue displays as #FF0000 instead of #0000FF",
+    "severity": 1,
+    "createdAt": 1673654400000,
+    "isDone": false,
+    "labels": [
+      "color",
       "ui",
-      "form"
+      "hex"
     ]
   },
   {
-    "_id": "bug012",
-    "title": "Notifications not appearing",
-    "description": "No push shown after message received",
+    "_id": "bug115",
+    "title": "Map markers cluster incorrectly",
+    "description": "Single locations show as groups of 50+",
     "severity": 2,
-    "createdAt": 1633107359454,
+    "createdAt": 1673740800000,
+    "isDone": false,
     "labels": [
-      "notifications",
-      "realtime"
+      "maps",
+      "clustering",
+      "visualization"
     ]
   },
   {
-    "_id": "bug009",
-    "title": "Search results empty",
-    "description": "Results not returned even for common queries",
-    "severity": 2,
-    "createdAt": 1630107359454,
+    "_id": "bug116",
+    "title": "Webhook delivery retries forever",
+    "description": "Failed webhooks keep retrying without exponential backoff",
+    "severity": 3,
+    "createdAt": 1673827200000,
+    "isDone": false,
     "labels": [
-      "search",
+      "webhook",
+      "retry",
       "backend"
     ]
   },
   {
-    "_id": "bug010",
-    "title": "Settings not saved",
-    "description": "Changes lost after reload",
-    "severity": 2
+    "_id": "bug117",
+    "title": "SSL certificate validation skipped",
+    "description": "API accepts invalid certificates in production",
+    "severity": 5,
+    "createdAt": 1673913600000,
+    "isDone": false,
+    "labels": [
+      "security",
+      "ssl",
+      "critical"
+    ]
   },
   {
-    "_id": "bug006",
-    "title": "Slow response from server",
-    "description": "API call takes 30s to return",
+    "_id": "bug118",
+    "title": "Rich text editor strips HTML",
+    "description": "Bold and italic formatting removed on save",
     "severity": 2,
-    "createdAt": 1627107359454,
+    "createdAt": 1674000000000,
+    "isDone": false,
     "labels": [
-      "performance",
-      "backend"
+      "editor",
+      "html",
+      "formatting"
+    ]
+  },
+  {
+    "_id": "bug119",
+    "title": "QR code scanner only works in portrait",
+    "description": "Camera fails to detect codes in landscape mode",
+    "severity": 2,
+    "createdAt": 1674086400000,
+    "isDone": false,
+    "labels": [
+      "qr",
+      "camera",
+      "orientation"
+    ]
+  },
+  {
+    "_id": "bug120",
+    "title": "Social media share counts wrong",
+    "description": "Shows 0 shares even for viral posts",
+    "severity": 1,
+    "createdAt": 1674172800000,
+    "isDone": true,
+    "labels": [
+      "social",
+      "sharing",
+      "analytics"
+    ]
+  },
+  {
+    "_id": "bug121",
+    "title": "Inventory sync creates duplicate products",
+    "description": "Same SKU appears multiple times in catalog",
+    "severity": 4,
+    "createdAt": 1674259200000,
+    "isDone": false,
+    "labels": [
+      "inventory",
+      "sync",
+      "duplicates"
+    ]
+  },
+  {
+    "_id": "bug122",
+    "title": "Audio recording cuts off at 60 seconds",
+    "description": "Voice memos stop recording automatically",
+    "severity": 2,
+    "createdAt": 1674345600000,
+    "isDone": false,
+    "labels": [
+      "audio",
+      "recording",
+      "limit"
+    ]
+  },
+  {
+    "_id": "bug123",
+    "title": "Barcode scanner misreads UPC codes",
+    "description": "Interprets 12-digit codes as 13-digit EAN",
+    "severity": 3,
+    "createdAt": 1674432000000,
+    "isDone": false,
+    "labels": [
+      "barcode",
+      "upc",
+      "scanning"
+    ]
+  },
+  {
+    "_id": "bug124",
+    "title": "Temperature sensor readings frozen",
+    "description": "IoT device shows same value for 3 hours",
+    "severity": 3,
+    "createdAt": 1674518400000,
+    "isDone": false,
+    "labels": [
+      "iot",
+      "sensor",
+      "temperature"
+    ]
+  },
+  {
+    "_id": "bug125",
+    "title": "Cryptocurrency prices delayed by 15 minutes",
+    "description": "Real-time ticker shows stale data",
+    "severity": 4,
+    "createdAt": 1674604800000,
+    "isDone": false,
+    "labels": [
+      "crypto",
+      "realtime",
+      "pricing"
+    ]
+  },
+  {
+    "_id": "bug126",
+    "title": "Voice commands not recognized in noisy environment",
+    "description": "AI assistant fails with background music",
+    "severity": 2,
+    "createdAt": 1674691200000,
+    "isDone": false,
+    "labels": [
+      "voice",
+      "ai",
+      "noise"
+    ]
+  },
+  {
+    "_id": "bug127",
+    "title": "GPS tracking drains battery in 2 hours",
+    "description": "Location services consume 90% battery",
+    "severity": 3,
+    "createdAt": 1674777600000,
+    "isDone": false,
+    "labels": [
+      "gps",
+      "battery",
+      "mobile"
+    ]
+  },
+  {
+    "_id": "bug128",
+    "title": "Facial recognition fails for users with glasses",
+    "description": "Camera auth rejects valid users wearing eyewear",
+    "severity": 3,
+    "createdAt": 1674864000000,
+    "isDone": false,
+    "labels": [
+      "facial",
+      "recognition",
+      "glasses"
+    ]
+  },
+  {
+    "_id": "bug129",
+    "title": "Smart home devices go offline randomly",
+    "description": "WiFi connectivity drops every 2-3 hours",
+    "severity": 3,
+    "createdAt": 1674950400000,
+    "isDone": false,
+    "labels": [
+      "smart-home",
+      "wifi",
+      "connectivity"
+    ]
+  },
+  {
+    "_id": "bug130",
+    "title": "Machine learning model predictions inconsistent",
+    "description": "Same input produces different outputs on refresh",
+    "severity": 4,
+    "createdAt": 1675036800000,
+    "isDone": false,
+    "labels": [
+      "ml",
+      "prediction",
+      "consistency"
     ]
   }
 ]
