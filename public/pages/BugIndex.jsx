@@ -10,6 +10,7 @@ export function BugIndex() {
     const [bugs, setBugs] = useState(null)
     const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
 
+
     useEffect(loadBugs, [filterBy])
 
     function loadBugs() {
@@ -50,19 +51,19 @@ export function BugIndex() {
     function onEditBug(bug) {
         const title = prompt('Bug title?', bug.title)
         if (title === null) return // User cancelled
-        
-        const description = prompt('Bug description?', bug.description) 
+
+        const description = prompt('Bug description?', bug.description)
         if (description === null) return
-        
+
         const severity = +prompt('Bug severity?', bug.severity)
         if (isNaN(severity)) return
-        
+
         // Make sure to include ALL required fields
-        const bugToSave = { 
+        const bugToSave = {
             ...bug,  // Keep all existing properties
-            title, 
-            description, 
-            severity 
+            title,
+            description,
+            severity
         }
 
         console.log('Sending bug to save:', bugToSave) // Debug log
@@ -72,7 +73,7 @@ export function BugIndex() {
                 console.log('Received saved bug:', savedBug) // Debug log
                 const bugsToUpdate = bugs.map(currBug =>
                     currBug._id === savedBug._id ? savedBug : currBug)
-                
+
                 setBugs(bugsToUpdate)
                 showSuccessMsg('Bug updated')
             })
@@ -86,12 +87,26 @@ export function BugIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
     }
 
+    function onNextPage() {
+        console.log('hi');
+        
+    }
+    
+    function onPrevPage() {
+        console.log('bye');
+    }
+
     return <section className="bug-index main-content">
 
         <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
         <header>
             <h3>Bug List</h3>
             <button onClick={onAddBug}>Add Bug</button>
+            <div>
+                <button onClick={onNextPage}>+</button>
+                <button onClick={onPrevPage}>-</button>
+            </div>
+
         </header>
 
         <BugList

@@ -17,13 +17,14 @@ export const bugService = {
 function query(filter, sort, page) {
     let filteredBugs = bugs
 
+    // Apply filtering
     if (filter.txt) {
         const regex = new RegExp(filter.txt, 'i')
         filteredBugs = filteredBugs.filter(bug => regex.test(bug.title) || regex.test(bug.description))
     }
 
     // Apply sorting
-    if (sort) {
+    if (sort && sort.sortBy) {
         console.log(filter, sort, page)
 
         if (['severity', 'createdAt'].includes(sort.sortBy)) {
@@ -35,14 +36,30 @@ function query(filter, sort, page) {
             filteredBugs.sort((a, b) =>
                 a[sort.sortBy].toLowerCase().localeCompare(b[sort.sortBy].toLowerCase()) * sort.sortDir)
         }
-
-        let startPage = page.pageIdx * BUGS_PER_PAGE
-        let endPage = startPage + BUGS_PER_PAGE
-
-        // filteredBugs = filteredBugs.slice(startPage, endPage)
-
-        return Promise.resolve(filteredBugs)
     }
+
+    // Calculate pagination info BEFORE slicing
+    const totalBugs = filteredBugs.length
+    const totalPages = Math.ceil(totalBugs / BUGS_PER_PAGE)
+    const currentPage = page?.pageIdx || 1
+
+    // Apply pagination with correct logic
+    if (page && page.pageIdx) {
+        const startIdx = (page.pageIdx - 1) * BUGS_PER_PAGE // Fix: use (pageIdx - 1)
+        const endIdx = startIdx + BUGS_PER_PAGE
+        filteredBugs = filteredBugs.slice(startIdx, endIdx)
+    }
+
+    console.log(`Total pages: ${totalPages}, Current page: ${currentPage}, Bugs in page: ${filteredBugs.length}`)
+
+    // Always return the complete pagination object
+    return Promise.resolve({
+        bugs: filteredBugs,
+        totalBugs,
+        totalPages,
+        currentPage,
+        bugsPerPage: BUGS_PER_PAGE
+    })
 }
 
 function getById(bugId) {
@@ -57,11 +74,11 @@ function getById(bugId) {
 
 function remove(bugId) {
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
-    
+
     if (bugIdx === -1) {
         return Promise.reject(`Bug with id ${bugId} not found`)
     }
-    
+
     bugs.splice(bugIdx, 1)
     return _saveBugs()
         .then(() => bugId)
