@@ -7,16 +7,52 @@ import { BugFilter } from '../cmps/BugFilter.jsx'
 import { BugList } from '../cmps/BugList.jsx'
 
 export function BugIndex() {
-    const [bugs, setBugs] = useState(null)
+    const [bugs, setBugs] = useState([])
     const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
-
+    const [paginationData, setPaginationData] = useState({
+        totalBugs: 0,
+        totalPages: 1,
+        currentPage: 1
+    })
 
     useEffect(loadBugs, [filterBy])
 
     function loadBugs() {
         bugService.query(filterBy)
-            .then(setBugs)
+            .then(result => {
+                console.log('Frontend received:', result) // Debug log
+                
+                if (result && result.bugs) {
+                    // New pagination format
+                    setBugs(result.bugs)
+                    setPaginationData({
+                        totalBugs: result.totalBugs,
+                        totalPages: result.totalPages,
+                        currentPage: result.currentPage
+                    })
+                } else if (Array.isArray(result)) {
+                    // Old format fallback
+                    setBugs(result)
+                    setPaginationData({
+                        totalBugs: result.length,
+                        totalPages: 1,
+                        currentPage: 1
+                    })
+                }
+            })
             .catch(err => showErrorMsg(`Couldn't load bugs - ${err}`))
+    }
+
+    function onPageChange(pageIdx) {
+        setFilterBy(prevFilter => ({ ...prevFilter, pageIdx }))
+    }
+
+    function onSetFilterBy(newFilterBy) {
+        setFilterBy(prevFilter => ({ 
+            ...prevFilter, 
+            ...newFilterBy, 
+            pageIdx: 1 // Reset to page 1 when filtering
+        }))
     }
 
     function onRemoveBug(bugId) {
@@ -83,10 +119,6 @@ export function BugIndex() {
             })
     }
 
-    function onSetFilterBy(filterBy) {
-        setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
-    }
-
     function onNextPage() {
         console.log('hi');
         
@@ -97,21 +129,50 @@ export function BugIndex() {
     }
 
     return <section className="bug-index main-content">
-
         <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+        
         <header>
             <h3>Bug List</h3>
             <button onClick={onAddBug}>Add Bug</button>
-            <div>
-                <button onClick={onNextPage}>+</button>
-                <button onClick={onPrevPage}>-</button>
-            </div>
-
         </header>
+
+        <div className="pagination-info">
+            Showing {bugs.length} of {paginationData.totalBugs} bugs 
+            (Page {paginationData.currentPage} of {paginationData.totalPages})
+        </div>
 
         <BugList
             bugs={bugs}
             onRemoveBug={onRemoveBug}
             onEditBug={onEditBug} />
+
+        {/* Pagination buttons */}
+        {paginationData.totalPages > 1 && (
+            <div className="pagination">
+                <button 
+                    onClick={() => onPageChange(paginationData.currentPage - 1)}
+                    disabled={paginationData.currentPage === 1}
+                >
+                    Previous
+                </button>
+
+                {Array.from({ length: paginationData.totalPages }, (_, i) => i + 1).map(pageNum => (
+                    <button
+                        key={pageNum}
+                        onClick={() => onPageChange(pageNum)}
+                        className={pageNum === paginationData.currentPage ? 'active' : ''}
+                    >
+                        {pageNum}
+                    </button>
+                ))}
+
+                <button 
+                    onClick={() => onPageChange(paginationData.currentPage + 1)}
+                    disabled={paginationData.currentPage === paginationData.totalPages}
+                >
+                    Next
+                </button>
+            </div>
+        )}
     </section>
 }

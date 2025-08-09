@@ -19,8 +19,8 @@ app.get('/api/bug', (req, res) => {
     }
 
     const sort = {
-        sortBy: sortBy || 'title', // Default sort by title
-        sortDir: sortDir ? parseInt(sortDir) : 1, // Default to ascending order
+        sortBy: sortBy || 'title',
+        sortDir: sortDir ? parseInt(sortDir) : 1,
     }
 
     const page = {
@@ -28,7 +28,14 @@ app.get('/api/bug', (req, res) => {
     }
 
     bugService.query(filter, sort, page)
-        .then(bugs => res.send(bugs))
+        .then(result => {
+            console.log('Sending to frontend:', result) // Debug log
+            res.send(result) // Send the complete object with totalPages
+        })
+        .catch(err => {
+            console.error('Query error:', err)
+            res.status(500).send({ error: err })
+        })
 })
 
 // GET BY ID
