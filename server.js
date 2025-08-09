@@ -12,10 +12,11 @@ app.get('/api/bug', (req, res) => {
     console.log('GETTING BUGS...')
     console.log('req.query:', req.query)
 
-    const { txt, sortBy, sortDir, pageIdx } = req.query
+    const { txt, minSeverity, sortBy, sortDir, pageIdx } = req.query
 
     const filter = {
         txt: txt || '',
+        minSeverity: minSeverity ? parseInt(minSeverity) : 0 // Add minSeverity
     }
 
     const sort = {
@@ -27,10 +28,12 @@ app.get('/api/bug', (req, res) => {
         pageIdx: pageIdx ? parseInt(pageIdx) : 1
     }
 
+    console.log('Calling bugService.query with:', { filter, sort, page })
+
     bugService.query(filter, sort, page)
         .then(result => {
-            console.log('Sending to frontend:', result) // Debug log
-            res.send(result) // Send the complete object with totalPages
+            console.log('Sending to frontend:', result)
+            res.send(result)
         })
         .catch(err => {
             console.error('Query error:', err)

@@ -18,12 +18,13 @@ export function BugIndex() {
     useEffect(loadBugs, [filterBy])
 
     function loadBugs() {
+        console.log('Loading bugs with filterBy:', filterBy) // Debug log
+        
         bugService.query(filterBy)
             .then(result => {
-                console.log('Frontend received:', result) // Debug log
+                console.log('Frontend received:', result)
                 
                 if (result && result.bugs) {
-                    // New pagination format
                     setBugs(result.bugs)
                     setPaginationData({
                         totalBugs: result.totalBugs,
@@ -31,7 +32,6 @@ export function BugIndex() {
                         currentPage: result.currentPage
                     })
                 } else if (Array.isArray(result)) {
-                    // Old format fallback
                     setBugs(result)
                     setPaginationData({
                         totalBugs: result.length,
@@ -40,7 +40,10 @@ export function BugIndex() {
                     })
                 }
             })
-            .catch(err => showErrorMsg(`Couldn't load bugs - ${err}`))
+            .catch(err => {
+                console.error('Load bugs error:', err)
+                showErrorMsg(`Couldn't load bugs - ${err}`)
+            })
     }
 
     function onPageChange(pageIdx) {
@@ -48,6 +51,7 @@ export function BugIndex() {
     }
 
     function onSetFilterBy(newFilterBy) {
+        console.log('Setting filter:', newFilterBy) // Debug log
         setFilterBy(prevFilter => ({ 
             ...prevFilter, 
             ...newFilterBy, 
@@ -58,8 +62,8 @@ export function BugIndex() {
     function onRemoveBug(bugId) {
         bugService.remove(bugId)
             .then(() => {
-                const bugsToUpdate = bugs.filter(bug => bug._id !== bugId)
-                setBugs(bugsToUpdate)
+                // Instead of manually filtering, reload the page data
+                loadBugs() // This will refresh with correct pagination
                 showSuccessMsg('Bug removed')
             })
             .catch((err) => showErrorMsg(`Cannot remove bug`, err))
@@ -75,7 +79,8 @@ export function BugIndex() {
         bugService.save(bug)
             .then(savedBug => {
                 console.log('Bug added:', savedBug)
-                setBugs(prevBugs => [...prevBugs, savedBug])
+                // Go to last page to see the new bug
+                loadBugs() // Refresh current page first
                 showSuccessMsg('Bug added')
             })
             .catch(err => {
@@ -119,15 +124,6 @@ export function BugIndex() {
             })
     }
 
-    function onNextPage() {
-        console.log('hi');
-        
-    }
-    
-    function onPrevPage() {
-        console.log('bye');
-    }
-
     return <section className="bug-index main-content">
         <BugFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
         
@@ -149,26 +145,31 @@ export function BugIndex() {
         {/* Pagination buttons */}
         {paginationData.totalPages > 1 && (
             <div className="pagination">
+                {/* Previous button */}
                 <button 
                     onClick={() => onPageChange(paginationData.currentPage - 1)}
                     disabled={paginationData.currentPage === 1}
+                    className="page-btn"
                 >
                     Previous
                 </button>
 
+                {/* Page number buttons */}
                 {Array.from({ length: paginationData.totalPages }, (_, i) => i + 1).map(pageNum => (
                     <button
                         key={pageNum}
                         onClick={() => onPageChange(pageNum)}
-                        className={pageNum === paginationData.currentPage ? 'active' : ''}
+                        className={`page-btn ${pageNum === paginationData.currentPage ? 'active' : ''}`}
                     >
                         {pageNum}
                     </button>
                 ))}
 
+                {/* Next button */}
                 <button 
                     onClick={() => onPageChange(paginationData.currentPage + 1)}
                     disabled={paginationData.currentPage === paginationData.totalPages}
+                    className="page-btn"
                 >
                     Next
                 </button>

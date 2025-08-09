@@ -2,9 +2,7 @@ import { makeId, readJsonFile, writeJsonFile } from './util.service.js'
 
 const bugs = readJsonFile('data/bug.json')
 
-const BUGS_PER_PAGE = 3
-let filteredBugs = bugs
-
+const BUGS_PER_PAGE = 4
 
 export const bugService = {
     query,
@@ -14,25 +12,33 @@ export const bugService = {
     getEmptyBug
 }
 
-function query(filter, sort, page) {
-    let filteredBugs = bugs
+function query(filter = {}, sort = {}, page = {}) {
+    console.log('Query called with:', { filter, sort, page })
+    
+    let filteredBugs = [...bugs] // Start with a copy of all bugs
 
-    // Apply filtering
-    if (filter.txt) {
-        const regex = new RegExp(filter.txt, 'i')
-        filteredBugs = filteredBugs.filter(bug => regex.test(bug.title) || regex.test(bug.description))
+    // Apply text filtering
+    if (filter.txt && filter.txt.trim()) {
+        const regex = new RegExp(filter.txt.trim(), 'i')
+        filteredBugs = filteredBugs.filter(bug => 
+            regex.test(bug.title) || regex.test(bug.description || '')
+        )
+        console.log(`After text filter "${filter.txt}":`, filteredBugs.length, 'bugs')
+    }
+
+    // Apply severity filtering
+    if (filter.minSeverity && filter.minSeverity > 0) {
+        filteredBugs = filteredBugs.filter(bug => bug.severity >= filter.minSeverity)
+        console.log(`After severity filter ${filter.minSeverity}:`, filteredBugs.length, 'bugs')
     }
 
     // Apply sorting
-    if (sort && sort.sortBy) {
-        console.log(filter, sort, page)
-
+    if (sort.sortBy) {
+        console.log('Applying sort:', sort)
         if (['severity', 'createdAt'].includes(sort.sortBy)) {
-            // Numeric sorting
             filteredBugs.sort((a, b) =>
                 (a[sort.sortBy] - b[sort.sortBy]) * sort.sortDir)
         } else {
-            // String sorting
             filteredBugs.sort((a, b) =>
                 a[sort.sortBy].toLowerCase().localeCompare(b[sort.sortBy].toLowerCase()) * sort.sortDir)
         }
@@ -41,18 +47,17 @@ function query(filter, sort, page) {
     // Calculate pagination info BEFORE slicing
     const totalBugs = filteredBugs.length
     const totalPages = Math.ceil(totalBugs / BUGS_PER_PAGE)
-    const currentPage = page?.pageIdx || 1
+    const currentPage = page.pageIdx || 1
 
-    // Apply pagination with correct logic
-    if (page && page.pageIdx) {
-        const startIdx = (page.pageIdx - 1) * BUGS_PER_PAGE // Fix: use (pageIdx - 1)
+    // Apply pagination
+    if (page.pageIdx && page.pageIdx > 0) {
+        const startIdx = (page.pageIdx - 1) * BUGS_PER_PAGE
         const endIdx = startIdx + BUGS_PER_PAGE
         filteredBugs = filteredBugs.slice(startIdx, endIdx)
     }
 
-    console.log(`Total pages: ${totalPages}, Current page: ${currentPage}, Bugs in page: ${filteredBugs.length}`)
+    console.log(`Final result: ${filteredBugs.length} bugs on page ${currentPage} of ${totalPages}`)
 
-    // Always return the complete pagination object
     return Promise.resolve({
         bugs: filteredBugs,
         totalBugs,

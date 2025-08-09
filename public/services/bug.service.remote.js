@@ -8,21 +8,25 @@ export const bugService = {
     getDefaultFilter,
 }
 
-function query(filterBy) {
-    return axios.get(BASE_URL)
-        .then(res => res.data)
-        .then(bugs => {
-
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                bugs = bugs.filter(bug => regExp.test(bug.title))
-            }
-
-            if (filterBy.minSeverity) {
-                bugs = bugs.filter(bug => bug.severity >= filterBy.minSeverity)
-            }
-
-            return bugs
+function query(filterBy = {}) {
+    console.log('Remote service query called with:', filterBy)
+    
+    const params = new URLSearchParams()
+    
+    // Add ALL filter parameters
+    if (filterBy.txt) params.append('txt', filterBy.txt)
+    if (filterBy.minSeverity && filterBy.minSeverity > 0) params.append('minSeverity', filterBy.minSeverity)
+    if (filterBy.sortBy) params.append('sortBy', filterBy.sortBy)
+    if (filterBy.sortDir) params.append('sortDir', filterBy.sortDir)
+    if (filterBy.pageIdx) params.append('pageIdx', filterBy.pageIdx)
+    
+    const url = params.toString() ? `${BASE_URL}?${params.toString()}` : BASE_URL
+    console.log('Making request to:', url)
+    
+    return axios.get(url)
+        .then(res => {
+            console.log('Remote service received:', res.data)
+            return res.data
         })
 }
 
@@ -59,5 +63,11 @@ function save(bug) {
 }
 
 function getDefaultFilter() {
-    return { txt: '', minSeverity: 0, pageIdx: 1 }
+    return { 
+        txt: '', 
+        minSeverity: 0, 
+        pageIdx: 1,
+        sortBy: 'title',
+        sortDir: 1
+    }
 }
