@@ -50,7 +50,7 @@ app.get('/api/bug/:bugId', (req, res) => {
 
     let visitedCount = +req.cookies.visitedCount || 0
     if (visitedCount > 3) {
-        loggerService.warn(`User has visited ${visitedCount} times`)
+        return res.status(401).send({ error: 'Wait for a bit' })
     }
     visitedCount++
     res.cookie('visitedCount', visitedCount, { maxAge: 1000 * 7 })
