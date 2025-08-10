@@ -122,5 +122,8 @@ app.delete('/api/bug/:bugId', (req, res) => {
         })
 })
 
+// Listen will always be the last line in our server!
 const port = 3030
-app.listen(port, () => console.log('Server ready at port 3030'))
+app.listen(port, () =>
+    loggerService.info(`Server listening on port http://localhost:${port}/`)
+)

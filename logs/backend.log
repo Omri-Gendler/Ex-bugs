@@ -45,3 +45,6 @@
 10.8.2025, 18:46:09 - ERROR - Couldn't find bug bug009 in bugService
 10.8.2025, 18:46:15 - ERROR - Couldnt find bug bug001 in bugService
 10.8.2025, 18:48:54 - WARN - User has visited 4 times
+10.8.2025, 19:07:56 - INFO - Server listening on port http://localhost:3030/
+10.8.2025, 19:09:57 - INFO - Server listening on port http://localhost:3030/
+10.8.2025, 19:11:40 - INFO - Server listening on port http://localhost:3030/

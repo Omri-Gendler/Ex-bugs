@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "omri gendler",
@@ -11,6 +11,7 @@
   "description": "",
   "type": "module",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "axios": "^1.11.0",
     "express": "^5.1.0",
     "nodemon": "^3.1.10"
