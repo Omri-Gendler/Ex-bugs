@@ -176,19 +176,6 @@
     ]
   },
   {
-    "_id": "bug101",
-    "title": "Login screen flickers on Firefox",
-    "description": "Username field disappears when typing password",
-    "severity": 2,
-    "createdAt": 1672531200000,
-    "isDone": false,
-    "labels": [
-      "firefox",
-      "login",
-      "ui"
-    ]
-  },
-  {
     "_id": "bug130",
     "title": "Machine learning model predictions inconsistent",
     "description": "Same input produces different outputs on refresh",

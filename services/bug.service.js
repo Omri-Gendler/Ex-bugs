@@ -1,4 +1,5 @@
 import { makeId, readJsonFile, writeJsonFile } from './util.service.js'
+import { loggerService } from './logger.service.js'
 
 const bugs = readJsonFile('data/bug.json')
 

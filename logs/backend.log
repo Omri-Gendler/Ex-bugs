@@ -39,3 +39,9 @@
 8.8.2025, 16:03:07 - DEBUG - Saving bug: | {"_id":"bug016","title":"you right","description":"i know","severity":5,"createdAt":1637107359454,"labels":["performance","dashboard"]}
 9.8.2025, 10:41:19 - DEBUG - Creating bug: | {"title":"TEST","severity":3,"description":"TESTING"}
 9.8.2025, 10:41:46 - DEBUG - Saving bug: | {"_id":"bug113","title":"Backup process fails silently","description":"No error message shown when disk space full","severity":4,"createdAt":1673568000000,"isDone":false,"labels":["backup","storage","error-handling"]}
+10.8.2025, 18:45:05 - INFO - Deleting bug: | bug101
+10.8.2025, 18:45:14 - DEBUG - Saving bug: | {"_id":"bug010","title":"Settings not saved","description":"Changes lost after reload","severity":1,"createdAt":1631107359454,"labels":["persistence","bug"]}
+10.8.2025, 18:46:09 - DEBUG - Saving bug: | {"_id":"bug010","title":"Settings not saved","description":"Changes lost after reload","severity":1,"createdAt":1631107359454,"labels":["persistence","bug"]}
+10.8.2025, 18:46:09 - ERROR - Couldn't find bug bug009 in bugService
+10.8.2025, 18:46:15 - ERROR - Couldnt find bug bug001 in bugService
+10.8.2025, 18:48:54 - WARN - User has visited 4 times

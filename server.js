@@ -1,4 +1,5 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
 
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
@@ -6,6 +7,7 @@ import { loggerService } from './services/logger.service.js'
 const app = express()
 app.use(express.static('public'))
 app.use(express.json())
+app.use(cookieParser())
 
 // GET ALL BUGS
 app.get('/api/bug', (req, res) => {
@@ -13,6 +15,7 @@ app.get('/api/bug', (req, res) => {
     console.log('req.query:', req.query)
 
     const { txt, minSeverity, sortBy, sortDir, pageIdx } = req.query
+
 
     const filter = {
         txt: txt || '',
@@ -44,6 +47,14 @@ app.get('/api/bug', (req, res) => {
 // GET BY ID
 app.get('/api/bug/:bugId', (req, res) => {
     const bugId = req.params.bugId
+
+    let visitedCount = +req.cookies.visitedCount || 0
+    if (visitedCount > 3) {
+        loggerService.warn(`User has visited ${visitedCount} times`)
+    }
+    visitedCount++
+    res.cookie('visitedCount', visitedCount, { maxAge: 1000 * 7 })
+
     bugService.getById(bugId)
         .then(bug => res.send(bug)) // Send the actual bug object
         .catch(err => res.status(404).send({ error: err }))
@@ -68,7 +79,7 @@ app.put('/api/bug/:bugId', (req, res) => {
         description,
         severity: +severity,
     }
-    
+
     bugService.save(bug)
         .then(savedBug => {
             console.log('Saved bug:', savedBug) // Add this debug log
@@ -82,15 +93,15 @@ app.put('/api/bug/:bugId', (req, res) => {
 
 app.post('/api/bug', (req, res) => {
     loggerService.debug('Creating bug:', req.body)
-    
+
     const { title, description, severity } = req.body
-    
+
     const bug = {
         title,
         description,
         severity: +severity,
     }
-    
+
     bugService.save(bug)
         .then(savedBug => res.send(savedBug)) // Send the bug object, not a string
         .catch(err => res.status(400).send({ error: err }))
