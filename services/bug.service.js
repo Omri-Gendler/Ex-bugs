@@ -15,15 +15,18 @@ export const bugService = {
 
 function query(filter = {}, sort = {}, page = {}) {
     console.log('Query called with:', { filter, sort, page })
-    
+
     let filteredBugs = [...bugs] // Start with a copy of all bugs
 
     // Apply text filtering
     if (filter.txt && filter.txt.trim()) {
         const regex = new RegExp(filter.txt.trim(), 'i')
-        filteredBugs = filteredBugs.filter(bug => 
+        filteredBugs = filteredBugs.filter(bug =>
             regex.test(bug.title) || regex.test(bug.description || '')
-        )
+        ).map(bug => ({
+            ...bug,
+            img: `./img/bug1.jpg`
+        }))
         console.log(`After text filter "${filter.txt}":`, filteredBugs.length, 'bugs')
     }
 

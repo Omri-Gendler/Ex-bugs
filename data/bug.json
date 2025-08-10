@@ -1,6 +1,7 @@
 [
   {
     "_id": "bug122",
+    "img": "./img/bugs/bug1.jpg",
     "title": "Audio recording cuts off at 60 seconds",
     "description": "Voice memos stop recording automatically",
     "severity": 2,
