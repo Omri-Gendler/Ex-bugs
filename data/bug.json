@@ -34,19 +34,6 @@
     ]
   },
   {
-    "_id": "bug109",
-    "title": "Calendar events duplicate on sync",
-    "description": "Google Calendar integration creates multiple entries",
-    "severity": 2,
-    "createdAt": 1673222400000,
-    "isDone": true,
-    "labels": [
-      "calendar",
-      "sync",
-      "google"
-    ]
-  },
-  {
     "_id": "bug104",
     "title": "Chat messages out of order",
     "description": "Newest messages appear at random positions",
@@ -379,5 +366,14 @@
       "retry",
       "backend"
     ]
+  },
+  {
+    "title": "Bug 1755373802748",
+    "description": "",
+    "severity": 3,
+    "_id": "fsInm",
+    "createdAt": 1755373803352,
+    "updatedAt": 1755373803352,
+    "isDone": false
   }
 ]

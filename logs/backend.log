@@ -56,3 +56,10 @@
 10.8.2025, 19:35:07 - INFO - Server listening on port http://localhost:3030/
 10.8.2025, 19:41:23 - INFO - Server listening on port http://localhost:3030/
 10.8.2025, 19:45:53 - INFO - Server listening on port http://localhost:3030/
+16.8.2025, 22:39:50 - INFO - Server listening on port http://localhost:3030/
+16.8.2025, 22:50:01 - INFO - Deleting bug: | bug109
+16.8.2025, 22:50:01 - INFO - Server listening on port http://localhost:3030/
+16.8.2025, 22:50:03 - DEBUG - Creating bug: | {"title":"Bug 1755373802748","severity":3,"description":""}
+16.8.2025, 22:50:03 - INFO - Server listening on port http://localhost:3030/
+16.8.2025, 23:05:12 - INFO - Server listening on port http://localhost:3030/
+16.8.2025, 23:06:21 - INFO - Server listening on port http://localhost:3030/
