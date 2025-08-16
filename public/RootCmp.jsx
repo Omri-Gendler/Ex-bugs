@@ -13,6 +13,7 @@ import { UserProfile } from './pages/UserProfile.jsx'
 import { AdminDashboard } from './pages/AdminDashboard.jsx'
 import { authService } from './services/auth.service.js'
 import { LoginSignup } from './cmps/LoginSignup.jsx'
+import { Signup } from './cmps/Signup.jsx'
 
 export function App() {
     const [loggedinUser, setLoggedinUser] = useState(authService.getLoggedinUser(null))
@@ -30,6 +31,7 @@ export function App() {
                     <Route path="/about" element={<AboutUs />} />
 
                     <Route element={<LoginSignup setLoggedinUser={setLoggedinUser} />} path="/auth" />
+                    <Route element={<Signup onSignup={setLoggedinUser} />} path="/signup" />
                     <Route element={<UserProfile />} path="/user/:userId" />
                     {/* <Route element={<AdminDashboard />} path="/admin" /> */}
                 </Routes>

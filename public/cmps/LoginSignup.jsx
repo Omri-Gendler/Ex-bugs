@@ -6,7 +6,7 @@ const { useNavigate } = ReactRouterDOM
 const { useState } = React
 
 export function LoginSignup({ setLoggedinUser }) {
-    const [isSignup, setIsSignUp] = useState(false)
+    const [isSignup, setIsSignUp] = useState(true)
     const navigate = useNavigate()
 
     function onLogin(credentials) {

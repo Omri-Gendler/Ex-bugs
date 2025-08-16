@@ -23,8 +23,9 @@ export function AppHeader({ loggedinUser, setLoggedinUser }) {
     return <header className="app-header main-content single-row">
         <img
             onClick={() => navigate('/')}
-            className="logo"
-            src="/assets/img/small-logo.png"
+            className="logo width=50px "
+            src="assets/img/miss-bug.png"
+            style={{ width: '50px', height: '50px' }}
         />
         <div className="nav-bar-container flex space-between">
             <nav className="nav-bar">
