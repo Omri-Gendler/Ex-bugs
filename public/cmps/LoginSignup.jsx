@@ -42,9 +42,9 @@ export function LoginSignup({ setLoggedinUser }) {
         <section className="login">
             <LoginForm onLogin={onLogin} isSignup={isSignup} />
             <div className="btns">
-                <a href="#" onClick={() => setIsSignUp(prev => !prev)}>
+                <button type="button" className="toggle-auth-btn" onClick={() => setIsSignUp(prev => !prev)}>
                     {isSignup ? 'Already a member? Login' : 'New user? Signup here'}
-                </a>
+                </button>
             </div>
         </section>
     )

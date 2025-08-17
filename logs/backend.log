@@ -75,3 +75,6 @@
 17.8.2025, 11:22:57 - INFO - Server listening on port http://localhost:3030/
 17.8.2025, 11:27:19 - INFO - Server listening on port http://localhost:3030/
 17.8.2025, 11:30:47 - INFO - Server listening on port http://localhost:3030/
+17.8.2025, 15:44:21 - INFO - Server listening on port http://localhost:3030/
+17.8.2025, 15:49:46 - ERROR - Cannot login | Invalid username or password
+17.8.2025, 15:49:52 - INFO - Server listening on port http://localhost:3030/
