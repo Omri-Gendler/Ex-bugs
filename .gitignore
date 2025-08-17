@@ -1,1 +1,24 @@
+# Node.js dependencies
 node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build output
+dist/
+build/
+
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# User data and sensitive files
+data/user.json
