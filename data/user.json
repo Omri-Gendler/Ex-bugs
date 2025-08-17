@@ -1,16 +1,63 @@
 [
-    {
-        "_id": "u101",
-        "fullname": "John Doe",
-        "username": "johndoe",
-        "password": "1234",
-        "isAdmin": false
-    },
-    {
-        "_id": "u102",
-        "fullname": "Jane Smith",
-        "username": "janesmith",
-        "password": "abcd",
-        "isAdmin": true
-    }
+  {
+    "username": "admin",
+    "password": "admin",
+    "fullname": "Admin Adminov",
+    "_id": "fLtg9",
+    "isAdmin": true
+  },
+  {
+    "_id": "u101",
+    "username": "puki",
+    "password": "puki",
+    "fullname": "Puki Ja"
+  },
+  {
+    "_id": "cQMMn",
+    "fullname": "Gigi Gu",
+    "password": "gigi",
+    "username": "gigi"
+  },
+  {
+    "_id": "IsHQv",
+    "fullname": "Nina Simantov",
+    "username": "nina",
+    "password": "nina",
+    "isAdmin": false
+  },
+  {
+    "_id": "sC1qJ",
+    "fullname": "Rami Rami",
+    "username": "rami",
+    "password": "rami",
+    "isAdmin": false
+  },
+  {
+    "_id": "zOzgM",
+    "fullname": "Lidor",
+    "username": "lidor",
+    "password": 123,
+    "isAdmin": false
+  },
+  {
+    "_id": "27osv",
+    "fullname": "asd",
+    "username": "asd",
+    "password": 123,
+    "isAdmin": false
+  },
+  {
+    "_id": "EQVr5",
+    "fullname": "Yulia",
+    "username": "yulia",
+    "password": "123",
+    "isAdmin": false
+  },
+  {
+    "_id": "lZdgA",
+    "fullname": "hoih",
+    "username": "j`huih",
+    "password": "u",
+    "isAdmin": false
+  }
 ]
