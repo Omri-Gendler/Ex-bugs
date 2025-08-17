@@ -1,0 +1,16 @@
+[
+    {
+        "_id": "u101",
+        "fullname": "John Doe",
+        "username": "johndoe",
+        "password": "1234",
+        "isAdmin": false
+    },
+    {
+        "_id": "u102",
+        "fullname": "Jane Smith",
+        "username": "janesmith",
+        "password": "abcd",
+        "isAdmin": true
+    }
+]
